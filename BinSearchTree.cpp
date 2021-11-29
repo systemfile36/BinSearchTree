@@ -7,19 +7,30 @@
 int main()
 {
     BSTree bst;
-    bst.Init();
-    bst.SetRoot(new TrNode<int>(4));
-    bst.BinInsert(new TrNode<int>(3));
-    bst.BinInsert(new TrNode<int>(5));
-    bst.BinInsert(new TrNode<int>(8));
-    bst.BinInsert(new TrNode<int>(2));
-    bst.BinInsert(new TrNode<int>(6));
-    bst.PrintLevelOrder();
-    std::cout << std::endl;
+    int input_count;
+    std::cout << "Input the number of data you want to put in the Tree : ";
+    std::cin >> input_count;
+
+    for (int i = 0; i < input_count; i++)
+    {
+        int temp;
+        std::cout << "Input number [" << i << "] : ";
+        std::cin >> temp;
+        if (i == 0)
+            bst.SetRoot(temp);
+
+        bst.BinInsert(temp);
+    }
+
+    std::cout << "Pre-Order : ";
     bst.PrintPreOrder();
     std::cout << std::endl;
-    std::cout << bst.BinSearch(8)->left->data;
-    bst.DestroyTree();
+    std::cout << "Level-Order : ";
+    bst.PrintLevelOrder();
+    std::cout << std::endl;
+
+
+
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴

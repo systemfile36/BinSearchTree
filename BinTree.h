@@ -8,11 +8,19 @@ public:
 	T data;
 	TrNode<T>* left;
 	TrNode<T>* right;
+
+	//노드의 생성자, 익명으로 넘기기 위해 정의함
 	TrNode<T>(T data,TrNode<T>* left = nullptr, TrNode<T>* right = nullptr)
 	{
 		this->data = data;
 		this->left = left;
 		this->right = right;
+	}
+
+	//기본 생성자
+	TrNode<T>()
+	{
+
 	}
 };
 
@@ -28,6 +36,7 @@ public:
 	TrNode<T>* CreateTree(T v, TrNode<T>* l, TrNode<T>* r);
 	TrNode<T>* GetRoot();
 	void SetRoot(TrNode<T>* r);
+	void SetRoot(T data);
 	void PrintPreOrder(TrNode<T>* n);
 	//매개변수 없으면 루트부터 순환
 	void PrintPreOrder();
@@ -79,6 +88,12 @@ template <class T>
 void BinTree<T>::SetRoot(TrNode<T>* r)
 {
 	this->root = r;
+}
+
+template <class T>
+void BinTree<T>::SetRoot(T data)
+{
+	this->root = new TrNode<T>(data);
 }
 
 template <class T>
